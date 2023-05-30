@@ -37,12 +37,14 @@ class _MyHomePageState extends State<MyHomePage> {
               itemBuilder: (context, index) {
                 return ListTile(
                   leading: CircleAvatar(
-                      child: Image.network(state.imageOne[index].toString())),
-                  title: Text(state.resortsName[index]),
-                  subtitle: Text(state.price[index].toString()),
+                    backgroundImage: NetworkImage(
+                        state.resortList[index].imageOne.toString()),
+                  ),
+                  title: Text(state.resortList[index].resortName),
+                  subtitle: Text(state.resortList[index].price.toString()),
                 );
               },
-              itemCount: state.resortsName.length,
+              itemCount: state.resortList.length,
             );
           }
           return Center(

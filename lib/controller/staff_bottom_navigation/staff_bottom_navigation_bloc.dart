@@ -21,29 +21,25 @@ class StaffBottomNavigationBloc
 
       try {
         Response response = await dio.get(resortListPath);
-        // ResortsListModal.fromJson(response.data.)
+
         if (response.statusCode == 200 || response.statusCode == 201) {
           // log(response.data.toString());
           log(response.data.toString(), name: "response data");
           List<dynamic> resortLists = response.data;
-          List resortList =
-              resortLists.map((resort) => resort["resort_name"]).toList();
-          List price = resortLists.map((e) => e["price"]).toList();
-          List imageOne = resortLists.map((e) => e["image_one"]).toList();
-          List imageTwo = resortLists.map((e) => e["image_two"]).toList();
-          List imageThree = resortLists.map((e) => e["image_three"]).toList();
-          List imageFour = resortLists.map((e) => e["image_four"]).toList();
+
+          List<ResortsListModal> resortList = [];
+
+          for (var element in resortLists) {
+            final resort = ResortsListModal.fromJson(element);
+            resortList.add(resort);
+          }
+          // List resortsList = resortLists.map((e) => e).toList();
           emit(
             ResortListState(
-              resortsName: resortList,
-              price: price,
-              imageFour: imageFour,
-              imageOne: imageOne,
-              imageThree: imageThree,
-              imageTwo: imageTwo,
+              resortList: resortList,
             ),
           );
-          log(resortList.toString(), name: "resort length");
+          // log(resortList.toString(), name: "resort length");
           // emit(StaffRestorantList(restorant: ));
         }
       } on DioError catch (e) {

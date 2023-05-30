@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:restorant_booking/controller/staff_bottom_navigation/staff_bottom_navigation_bloc.dart';
-
-import 'package:restorant_booking/view/login_screen.dart';
 import 'package:restorant_booking/view/splash_screen.dart';
 
 import 'controller/bloc/splash_screen_bloc.dart';

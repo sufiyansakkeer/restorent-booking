@@ -18,18 +18,8 @@ class StaffRestorantList extends StaffBottomNavigationState {
 }
 
 class ResortListState extends StaffBottomNavigationState {
-  final List resortsName;
-  final List price;
-  final List imageOne;
-  final List imageTwo;
-  final List imageThree;
-  final List imageFour;
+  final List<ResortsListModal> resortList;
   const ResortListState({
-    required this.resortsName,
-    required this.price,
-    required this.imageOne,
-    required this.imageTwo,
-    required this.imageThree,
-    required this.imageFour,
+    required this.resortList,
   });
 }
