@@ -1,10 +1,10 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restorant_booking/controller/login/login_bloc.dart';
 import 'package:restorant_booking/core/constants.dart';
-import 'package:restorant_booking/view/home_screen.dart';
+
+import 'bottom_navigation.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -52,9 +52,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     email: _emailController.text,
                     password: _passwordController.text));
                 if (BlocProvider.of<LoginBloc>(context).state is LoginSuccess) {
-                  log("kkjkjkj");
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const MyHomePage(),
+                    builder: (context) => StaffBottomNavigation(),
                   ));
                 }
               },

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:restorant_booking/controller/staff_bottom_navigation/staff_bottom_navigation_bloc.dart';
 
 import 'package:restorant_booking/view/login_screen.dart';
 
@@ -15,17 +16,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LoginBloc(),
-      child: OverlaySupport.global(
-        child: MaterialApp(
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => LoginBloc(),
           ),
-          home: const LoginScreen(),
-        ),
-      ),
-    );
+          BlocProvider(
+            create: (context) => StaffBottomNavigationBloc(),
+          )
+        ],
+        child: OverlaySupport.global(
+          child: MaterialApp(
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              useMaterial3: true,
+            ),
+            home: const LoginScreen(),
+          ),
+        ));
   }
 }

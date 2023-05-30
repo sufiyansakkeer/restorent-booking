@@ -6,3 +6,5 @@ abstract class StaffBottomNavigationEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class GetAllStaffRestorant extends StaffBottomNavigationEvent {}
