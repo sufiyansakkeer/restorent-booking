@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restorant_booking/controller/login/login_bloc.dart';
@@ -50,7 +49,8 @@ class _LoginScreenState extends State<LoginScreen> {
               onPressed: () async {
                 BlocProvider.of<LoginBloc>(context).add(LoginStart(
                     email: _emailController.text,
-                    password: _passwordController.text));
+                    password: _passwordController.text,
+                    context: context));
                 if (BlocProvider.of<LoginBloc>(context).state is LoginSuccess) {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (context) => StaffBottomNavigation(),

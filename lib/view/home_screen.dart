@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restorant_booking/controller/login/login_bloc.dart';
 import 'package:restorant_booking/controller/staff_bottom_navigation/staff_bottom_navigation_bloc.dart';
+import 'package:restorant_booking/view/resort_view.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -24,6 +26,16 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text("Home"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                BlocProvider.of<LoginBloc>(context)
+                    .add(LogOutEvent(context: context));
+              },
+              icon: const Icon(
+                Icons.exit_to_app,
+              ))
+        ],
       ),
       body: BlocBuilder<StaffBottomNavigationBloc, StaffBottomNavigationState>(
         builder: (context, state) {
@@ -42,9 +54,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   title: Text(state.resortList[index].resortName),
                   subtitle: Text(state.resortList[index].price.toString()),
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          ResortView(resortsListModal: state.resortList[index]),
+                    ));
+                  },
                 );
               },
               itemCount: state.resortList.length,
+            );
+          } else if (state is StaffLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
             );
           }
           return Center(

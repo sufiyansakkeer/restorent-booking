@@ -9,6 +9,14 @@ abstract class LoginEvent extends Equatable {
 
 class LoginStart extends LoginEvent {
   final String email, password;
+  final BuildContext context;
 
-  const LoginStart({required this.email, required this.password});
+  const LoginStart(
+      {required this.email, required this.password, required this.context});
+}
+
+class LogOutEvent extends LoginEvent {
+  final BuildContext context;
+
+  const LogOutEvent({required this.context});
 }

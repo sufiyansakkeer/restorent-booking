@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
+import 'package:restorant_booking/controller/login/login_bloc.dart';
 import 'package:restorant_booking/core/strings.dart';
 import 'package:restorant_booking/model/resorts_list_model.dart';
 import 'package:restorant_booking/repository/authentication.dart';
@@ -12,10 +13,12 @@ part 'staff_bottom_navigation_state.dart';
 
 class StaffBottomNavigationBloc
     extends Bloc<StaffBottomNavigationEvent, StaffBottomNavigationState> {
+  LoginBloc loginBloc = LoginBloc();
   StaffBottomNavigationBloc() : super(StaffBottomNavigationInitial()) {
     Dio dio = Dio();
     Authentication auth = Authentication();
     on<GetAllStaffRestorant>((event, emit) async {
+      emit(StaffLoading());
       final userId = await auth.userId();
       String resortListPath = "$baseUrl$staffRestorant$userId";
 

@@ -16,3 +16,5 @@ class LoginSuccess extends LoginState {
 
   const LoginSuccess({required this.accessToken});
 }
+
+class LogOut extends LoginState {}

@@ -1,5 +1,4 @@
 class ResortsListModal {
-  int id;
   Owner owner;
   Location location;
   String resortName;
@@ -24,7 +23,6 @@ class ResortsListModal {
   DateTime modifiedDate;
 
   ResortsListModal({
-    required this.id,
     required this.owner,
     required this.location,
     required this.resortName,
@@ -51,7 +49,6 @@ class ResortsListModal {
 
   factory ResortsListModal.fromJson(Map<String, dynamic> json) =>
       ResortsListModal(
-        id: json["id"],
         owner: Owner.fromJson(json["owner"]),
         location: Location.fromJson(json["location"]),
         resortName: json["resort_name"],
@@ -77,7 +74,6 @@ class ResortsListModal {
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
         "owner": owner.toJson(),
         "location": location.toJson(),
         "resort_name": resortName,

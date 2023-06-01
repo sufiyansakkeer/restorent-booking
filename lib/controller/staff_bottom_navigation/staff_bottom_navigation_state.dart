@@ -10,12 +10,9 @@ abstract class StaffBottomNavigationState extends Equatable {
 
 class StaffBottomNavigationInitial extends StaffBottomNavigationState {}
 
-class StaffRestorantList extends StaffBottomNavigationState {
-  final List<ResortsListModal> restorant;
-  const StaffRestorantList({
-    required this.restorant,
-  });
-}
+class StaffLoading extends StaffBottomNavigationState {}
+
+class StaffRestorantListError extends StaffBottomNavigationState {}
 
 class ResortListState extends StaffBottomNavigationState {
   final List<ResortsListModal> resortList;

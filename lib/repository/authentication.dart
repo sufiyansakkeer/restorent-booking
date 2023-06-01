@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:restorant_booking/view/bottom_navigation.dart';
+import 'package:restorant_booking/view/home_screen.dart';
 import 'package:restorant_booking/view/login_screen.dart';
 
 class Authentication {
@@ -50,5 +51,20 @@ class Authentication {
         ));
       }
     }
+  }
+
+  Future logOut(context) async {
+    await storage.delete(key: "access_token");
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+          builder: (context) => const LoginScreen(),
+        ),
+        (route) => false);
+  }
+
+  homeNavigation(context) {
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+      builder: (context) => const MyHomePage(),
+    ));
   }
 }
