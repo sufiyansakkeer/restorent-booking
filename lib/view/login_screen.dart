@@ -45,21 +45,33 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             height20,
-            FilledButton(
-              onPressed: () async {
-                BlocProvider.of<LoginBloc>(context).add(LoginStart(
-                    email: _emailController.text,
-                    password: _passwordController.text,
-                    context: context));
-                if (BlocProvider.of<LoginBloc>(context).state is LoginSuccess) {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => StaffBottomNavigation(),
-                  ));
-                }
+            BlocBuilder<LoginBloc, LoginState>(
+              builder: (context, state) {
+                return FilledButton(
+                  onPressed: () async {
+                    BlocProvider.of<LoginBloc>(context).add(LoginStart(
+                        email: _emailController.text,
+                        password: _passwordController.text,
+                        context: context));
+                    if (state is LoginSuccess) {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => StaffBottomNavigation(),
+                      ));
+                    }
+                  },
+                  child: state is LoginLoad
+                      ? const CircularProgressIndicator(
+                          color: Colors.white,
+                        )
+                      : Text(
+                          state is LoginSuccess
+                              ? "✓"
+                              : state is LoginError
+                                  ? "Sign In"
+                                  : "Sign in",
+                        ),
+                );
               },
-              child: const Text(
-                "Sign In",
-              ),
             ),
           ],
         ),

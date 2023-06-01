@@ -11,6 +11,8 @@ class LoginInitial extends LoginState {}
 
 class LoginLoad extends LoginState {}
 
+class LoginError extends LoginState {}
+
 class LoginSuccess extends LoginState {
   final String accessToken;
 

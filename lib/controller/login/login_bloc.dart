@@ -19,6 +19,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     Authentication auth = Authentication();
 
     on<LoginStart>((event, emit) async {
+      emit(LoginLoad());
       SignInRequestModel signInRequest =
           SignInRequestModel(email: event.email, password: event.password);
       await signIn.signInRequest(signInRequest).then((value) {
@@ -28,10 +29,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           auth.homeNavigation(event.context);
           // emit(LoginSuccess(accessToken: value.access));
         } else {
-          emit(LoginLoad());
+          emit(LoginError());
           log("no value found");
         }
       });
+      emit(LoginInitial());
       auth.checkUser();
     });
     on<LogOutEvent>((event, emit) async {
