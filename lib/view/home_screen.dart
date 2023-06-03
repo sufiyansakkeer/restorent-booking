@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:restorant_booking/controller/login/login_bloc.dart';
-import 'package:restorant_booking/controller/staff_bottom_navigation/staff_bottom_navigation_bloc.dart';
+import 'package:restorant_booking/view/edit_resorts.dart';
+
 import 'package:restorant_booking/view/resort_view.dart';
+
+import '../bloc/login/login_bloc.dart';
+import '../bloc/staff_bottom_navigation/staff_bottom_navigation_bloc.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -76,6 +79,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         .add(GetAllStaffRestorant());
                   },
                   child: const Text("get Data")));
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const RandomScreen(),
+          ));
         },
       ),
     );

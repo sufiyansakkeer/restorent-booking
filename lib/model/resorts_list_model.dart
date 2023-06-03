@@ -1,22 +1,22 @@
 class ResortsListModal {
   Owner owner;
-  Location location;
   String resortName;
-  dynamic mapLocation;
   String place;
+  Location location;
   String address;
   String zipcode;
   String phoneNumber;
-  String roomType;
-  int price;
-  String description;
   int roomsAvailable;
-  bool poolAvailable;
+  int price;
+  String roomType;
+  String description;
   bool wifiAvailable;
+  bool poolAvailable;
   String imageOne;
   String imageTwo;
   String imageThree;
   String imageFour;
+  dynamic mapLocation;
   bool isApproved;
   bool isRejected;
   DateTime createdDate;

@@ -19,7 +19,7 @@ class ApiServices {
           await _dio.post(path, data: jsonEncode(signInRequestModel));
       // log(response.data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
-        log(response.data.toString());
+        // log(response.data.toString());
 
         final SignInResponseModel inResponseModel =
             SignInResponseModel.fromJson(response.data);
