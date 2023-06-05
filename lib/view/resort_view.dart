@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:restorant_booking/model/resorts_list_model.dart';
-import 'package:restorant_booking/view/edit_resorts.dart';
 
 class ResortView extends StatelessWidget {
   const ResortView({

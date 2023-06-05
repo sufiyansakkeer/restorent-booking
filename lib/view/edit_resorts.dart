@@ -78,7 +78,7 @@ class RandomScreen extends StatelessWidget {
                                   if (state is GetLoadedState) {
                                     return TextField(
                                       controller: textEditingController,
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         hintText: "first name",
                                         border: OutlineInputBorder(),
                                       ),
@@ -99,7 +99,7 @@ class RandomScreen extends StatelessWidget {
                                       },
                                     );
                                   } else {
-                                    return Center(
+                                    return const Center(
                                       child: Text("Nothing to patch"),
                                     );
                                   }
